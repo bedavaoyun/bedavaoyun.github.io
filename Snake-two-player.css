@@ -1,0 +1,10 @@
+.GameContainer {
+    margin: auto;
+    width: 1200px;
+    height: 800px;
+}
+
+#GameCanvas {
+    margin-top: 150px;
+    margin-left: 300px;
+}
