@@ -1,7 +1,5 @@
 window.onload = function() {
     document.getElementById("GameCanvas").addEventListener("click", OnMouseClick);
-
-    CreateMainMenu();
 }
 
 function OnMouseClick() {
