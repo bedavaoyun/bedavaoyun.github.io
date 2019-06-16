@@ -1,14 +1,17 @@
 window.onload = function() {
-    myCanvas = document.getElementById("GameCanvas");
-    myContext = myCanvas.myContext("2d");
+    document.getElementById("GameCanvas").addEventListener("click", OnMouseClick);
 
     CreateMainMenu();
 }
 
-function CreateMainMenu() {
-    myCanvas.addEventListener("click", OnMouseClick);
-}
-
 function OnMouseClick() {
 
+}
+
+function OnePlayer() {
+    alert("One Player");
+}
+
+function TwoPlayer() {
+    alert("Two Player");
 }
