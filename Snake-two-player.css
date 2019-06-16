@@ -3,36 +3,6 @@
     margin-left: 300px;
 }
 
-.Main_Up {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 5px;
-    margin-bottom: 25px;
-    width: 1800px;
-    height: 150px;
-    background-color: #f0f0f0;
-}
-
-.Main_Up .Main_LogoContainer {
-    width: 300px;
-    height: 150px;
-}
-
-.Main_Up .Main_LogoContainer .Main_Logo {
-    margin: 5px;
-    width: auto;
-    height: 140px;
-}
-
-.Main_Down {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 5px;
-    width: 1800px;
-    height: 950px;
-    background-color: #f5f5f5;
-}
-
 .Main_Down .GameContainer {
     margin: auto;
     width: 1200px;
