@@ -1,0 +1,10 @@
+#GameCanvas {
+    margin: auto;
+}
+
+.Main_Down .GameContainer {
+    margin: auto;
+    width: 1200px;
+    height: 800px;
+    background-color: #f0f0f0;
+}
