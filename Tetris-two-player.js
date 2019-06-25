@@ -5,25 +5,40 @@ var height = 800;
 var FPS = 5;
 var Mode = 1;
 var blocks = {
-    T: [
-        [0, 1, 0],
-        [1, 1, 1]
-    ],
-    Z: [
-        [2, 2, 0],
-        [0, 2, 2]
-    ],
-    S: [
-        [0, 3, 3],
-        [3, 3, 0]
-    ],
-    O: [
-        [4, 4],
-        [4, 4]
-    ],
-    I: [
-        [5, 5, 5, 5]
-    ],
+    T: {
+        data: [
+            [0, 1, 0],
+            [1, 1, 1]
+        ],
+        size: [2, 3]
+    },
+    Z: {
+        data: [
+            [2, 2, 0],
+            [0, 2, 2]
+        ],
+        size: [2, 3]
+    },
+    S: {
+        data: [
+            [0, 3, 3],
+            [3, 3, 0]
+        ],
+        size: [2, 3]
+    },
+    O: {
+        data: [
+            [4, 4],
+            [4, 4]
+        ],
+        size: [2, 2]
+    },
+    I: {
+        data: [
+            [5, 5, 5, 5]
+        ],
+        size: [1, 4]
+    },
     L: {
         data: [
             [6, 6, 6],
@@ -31,10 +46,13 @@ var blocks = {
         ],
         size: [2, 3]
     },
-    J: [
-        [7, 0, 0],
-        [7, 7, 7]
-    ]
+    J: {
+        data: [
+            [7, 0, 0],
+            [7, 7, 7]
+        ],
+        size: [2, 3]
+    }
 };
 
 var currBlock = blocks.L;
@@ -85,7 +103,15 @@ function SetCanvas() {
     canvas.height = height;
 }
 
-function OnKeyPush(evt) {}
+function OnKeyPush(evt) {
+    switch (evt.keyCode) {
+        case 32:
+            currr++;
+            if (currr == 4)
+                currr = 0;
+            break;
+    }
+}
 
 function OnePlayer() {
     Mode = 1;
@@ -121,8 +147,25 @@ function GameOnePlayer() {
 
 function Draw(b, x, y, r) {
     context.fillStyle = GameMap.color.insides[currColor];
-    for (var i = x; i < b.size[0] + x; i++)
-        for (var j = y; j < b.size[1] + y; j++)
-            if (b.data[i - x][j - y] != 0)
-                context.fillRect(GameMap.offset.x + i * GameMap.tileL + 1, GameMap.offset.y + j * GameMap.tileL + 1, GameMap.tileL - 2, GameMap.tileL - 2);
+    if (r == 0) {
+        for (var i = 0; i < b.size[0]; i++)
+            for (var j = 0; j < b.size[1]; j++)
+                if (b.data[i][j] != 0)
+                    context.fillRect(GameMap.offset.x + (b.size[0] - 1 - i + x) * GameMap.tileL + 1, GameMap.offset.y + (j + y) * GameMap.tileL + 1, GameMap.tileL - 2, GameMap.tileL - 2);
+    } else if (r == 1) {
+        for (var i = 0; i < b.size[0]; i++)
+            for (var j = 0; j < b.size[1]; j++)
+                if (b.data[i][j] != 0)
+                    context.fillRect(GameMap.offset.x + (j + x) * GameMap.tileL + 1, GameMap.offset.y + (i + y) * GameMap.tileL + 1, GameMap.tileL - 2, GameMap.tileL - 2);
+    } else if (r == 2) {
+        for (var i = 0; i < b.size[0]; i++)
+            for (var j = 0; j < b.size[1]; j++)
+                if (b.data[i][j] != 0)
+                    context.fillRect(GameMap.offset.x + (i + x) * GameMap.tileL + 1, GameMap.offset.y + (b.size[1] - 1 - j + y) * GameMap.tileL + 1, GameMap.tileL - 2, GameMap.tileL - 2);
+    } else if (r == 3) {
+        for (var i = 0; i < b.size[0]; i++)
+            for (var j = 0; j < b.size[1]; j++)
+                if (b.data[i][j] != 0)
+                    context.fillRect(GameMap.offset.x + (b.size[1] - 1 - j + x) * GameMap.tileL + 1, GameMap.offset.y + (b.size[0] - 1 - i + y) * GameMap.tileL + 1, GameMap.tileL - 2, GameMap.tileL - 2);
+    }
 }
