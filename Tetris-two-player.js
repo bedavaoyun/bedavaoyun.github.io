@@ -139,10 +139,16 @@ function SetMap1() {
 var currx = 1;
 var curry = 3;
 var currr = 0;
+var frame = 1;
 
 function GameOnePlayer() {
     SetMap1();
     Draw(currBlock, currx, curry, currr);
+    frame++;
+    if (frame == 6) {
+        frame = 0;
+        curry++;
+    }
 }
 
 function Draw(b, x, y, r) {
